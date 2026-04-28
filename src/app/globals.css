@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Whisper&display=swap');
+@import "tailwindcss";
+
+/* SUIT 폰트 - 로컬 public/fonts/ 에서 불러오기 (404 방지) */
+@font-face {
+  font-family: 'SUIT';
+  src: url('/fonts/SUIT-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Runalto';
+  src: url('/fonts/Runalto.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'MaruBuri';
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/MaruBuri-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'MaruBuri';
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/MaruBuri-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'MaruBuri';
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/MaruBuri-Bold.woff2') format('woff2');
+}
+
+/* The local @font-face rules for Cormorant Garamond are now redundant due to the Google Fonts import. */
+/* @font-face {
+  font-family: 'Cormorant Garamond';
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/CormorantGaramond-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/CormorantGaramond-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 200;
+  font-display: swap;
+  src: url('/fonts/Pretendard-ExtraLight.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Pretendard-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Pretendard-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Pretendard-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Pretendard-Bold.woff2') format('woff2');
+}
+
+/* --- Tailwind v4 커스텀 테마 --- */
+@theme {
+  /* 브랜드 컬러: 미드나잇블루 메인 + 골드 포인트 */
+  --color-brand: #282d3d;
+  --color-brand-light: #304563;
+  --color-brand-muted: #4a5568;
+  --color-brand-dark: #1a1f2e;
+  --color-accent: #bbaa68;
+  /* 포인트: 골드 그라데이션용 밝은 골드 */
+  --color-accent-light: #d4c77a;
+
+  /* 뉴트럴 (텍스트) */
+  --color-neutral-900: #222222;
+  --color-neutral-800: #333333;
+  --color-neutral-700: #444444;
+  --color-neutral-600: #666666;
+  --color-neutral-500: #777777;
+  --color-neutral-400: #999999;
+  --color-neutral-300: #DDDDDD;
+
+  /* 배경: 뮤트 라이트그레이 (순수 화이트 제거) */
+  --color-surface: #F2F1ED;
+  --color-surface-warm: #EDECEA;
+  --color-surface-cool: #E8E7E3;
+  --color-surface-footer: #282d3d;
+
+  /* 폰트 패밀리 */
+  --font-sans: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'Malgun Gothic', sans-serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-whisper: 'Whisper', cursive;
+  --font-korean-serif: 'MaruBuri', serif;
+
+  /* 콘텐츠 최대 폭 */
+  --width-content: 1560px;
+  --width-content-md: 980px;
+  --width-content-sm: 600px;
+
+  /* 섹션 여백 */
+  --spacing-section-xl: 200px;
+  --spacing-section-lg: 120px;
+  --spacing-section-md: 80px;
+  --spacing-section-sm: 60px;
+  --spacing-section-xs: 40px;
+
+  /* keyframes */
+  --animate-marquee: marquee 100s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 100s linear infinite;
+  --animate-bounce-down: bounce-down 2s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.8s ease forwards;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-reverse {
+    0% {
+      transform: translateX(-50%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes bounce-down {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(8px);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* --- 모바일 vh 보정 --- */
+:root {
+  --vh: 1vh;
+}
+
+/* --- 기본 스타일 --- */
+body {
+  font-family: var(--font-sans);
+  color: var(--color-neutral-900);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.03em;
+  /* 고급스러운 촘촘한 디자인 */
+}
+
+/* --- 타이포그래피 매핑 --- */
+h1,
+h2,
+h4,
+h5,
+h6,
+.main_visual {
+  letter-spacing: -0.03em;
+}
+
+.eng_tit,
+.sub_title,
+.whisper {
+  letter-spacing: -0.03em;
+}
+
+.korean-serif-title {
+  font-family: var(--font-korean-serif);
+  letter-spacing: -0.05em;
+  line-height: 1.35 !important;
+}
+
+.font-runalto {
+  font-family: 'Runalto', serif !important;
+}
+
+.font-suit-el {
+  font-family: 'SUIT', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+/* --- AOS 대체: 스크롤 등장 애니메이션 --- */
+.aos-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.aos-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 마키 배너 --- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.filler-wrap::before,
+.filler-wrap::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  background: var(--color-surface);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.filler-wrap::before {
+  top: -140px;
+  height: 180px;
+  border-bottom-left-radius: 50% 100%;
+  border-bottom-right-radius: 50% 100%;
+}
+
+.filler-wrap::after {
+  bottom: -140px;
+  height: 180px;
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+}
+
+/* --- 스크롤바 커스텀 --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-muted);
+  border-radius: 3px;
+}
+
+/* --- Swiper 커스텀 --- */
+.swiper-pagination-bullet {
+  background: var(--color-brand-muted) !important;
+  opacity: 0.5 !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: var(--color-accent) !important;
+}
+
+/* --- 골드 그라데이션/금박 효과 유틸리티 --- */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #bbaa68 0%, #d4c77a 40%, #bbaa68 60%, #9a8a50 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #bbaa68 0%, #d4c77a 50%, #bbaa68 100%);
+}
+
+/* --- 미디어 플레이스홀더 --- */
+.media-placeholder {
+  background: linear-gradient(135deg, #EDECEA 0%, #E8E7E3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  border: 2px dashed var(--color-neutral-300);
+  border-radius: 12px;
+  color: var(--color-neutral-400);
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.media-placeholder::before {
+  content: '📷';
+  font-size: 32px;
+  margin-bottom: 4px;
+}
