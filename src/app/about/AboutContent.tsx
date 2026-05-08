@@ -482,13 +482,19 @@ export default function AboutContent() {
                                     <p className="text-[16px] font-bold text-accent mb-6 uppercase tracking-wider">약력</p>
                                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
                                         {[
-                                            "고려대학교 생명과학부",
-                                            "고려대학교 생명과학대학원 분자생물학과 석사",
-                                            "을지대학교 의과대학",
-                                            "B.S. in Biological Sciences, Korea University",
-                                            "M.S. in Molecular Biology, Korea University",
-                                            "M.D., Eulji University School of Medicine",
-                                            "USMLE Step 1, Step 2 CS Passed"
+                                            "현) 리브영의원 대표원장",
+                                            "대한필러학회 정회원",
+                                            "전) 쁨클리닉",
+                                            "대한미용성형레이저학회 정회원",
+                                            "전) 포인트업 의원",
+                                            "대한비만학회 정회원",
+                                            "전) 메이드유 의원",
+                                            "대한미용외과학회 정회원",
+                                            "전) 메이퓨어 의원",
+                                            "대한레이저피부모발학회 정회원",
+                                            "전) 아미스킨 의원",
+                                            "대한일차진료학회 정회원",
+                                            "영어 진료가능(미국의사면허시험 USMLE Step 1 & Step 2 CS) "
                                         ].map((item, idx) => (
                                             <li
                                                 key={`pro-final-${idx}`}
