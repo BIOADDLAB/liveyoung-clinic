@@ -437,7 +437,7 @@ export const SKIN_BOOSTER_DATA: TreatmentPageData = {
     ctaMessage: "스킨부스터 상담 예약하기",
 };
 
-/** 4P - Texture (미백/모공/흉터) */
+/** 4P - Texture (미백/모공) */
 export const TEXTURE_DATA: TreatmentPageData = {
     slug: "texture",
     enCategory: "TEXTURE",

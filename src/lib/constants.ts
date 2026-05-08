@@ -25,8 +25,7 @@ export const NAV_MENUS = [
             { label: "얼굴/바디 컨투어링", href: "/treatment/tightening" },
             { label: "스킨부스터", href: "/treatment/skin-booster" },
             { label: "리프팅", href: "/treatment/lifting" },
-            { label: "미백/모공/흉터", href: "/treatment/texture" },
-            { label: "줄기세포", href: "/treatment/stem-cell" },
+            { label: "미백/모공", href: "/treatment/texture" },
         ],
     },
     {

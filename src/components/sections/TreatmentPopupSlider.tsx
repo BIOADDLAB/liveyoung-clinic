@@ -40,7 +40,7 @@ const SLIDES = [
     {
         id: 4,
         enTitle: "TEXTURE",
-        koTitle: "미백/모공/흉터",
+        koTitle: "미백/모공",
         description: "지우는 것을 넘어, 건강한 피부 바탕의 본연을 되찾아 드립니다. 색소의 뿌리와 흉터의 깊이를 파악하는 심층 분석.",
         href: "/treatment/texture",
         imageUrl: "/images/popupslide/texture_popup.webp",
