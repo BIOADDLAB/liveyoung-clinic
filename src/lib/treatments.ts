@@ -252,7 +252,6 @@ export const TIGHTENING_DATA: TreatmentPageData = {
             subItems: [
                 { name: "필러" },
                 { name: "보톡스" },
-                { name: "지방분해주사" },
                 { name: "레이저", href: "/treatment/lifting" }
             ]
         },
@@ -274,7 +273,6 @@ export const TIGHTENING_DATA: TreatmentPageData = {
             analysisPoint: "개별 체형과 피부 탄력을 고려하여 가장 효과적인 약물 배합과 에너지 강도를 설정, 매끄러운 바디 라인을 완성합니다.",
             subItems: [
                 { name: "보톡스" },
-                { name: "지방분해주사" }
             ]
         },
     ],
@@ -444,7 +442,7 @@ export const TEXTURE_DATA: TreatmentPageData = {
     slug: "texture",
     enCategory: "TEXTURE",
     signatureText: "Premium",
-    title: "미백/모공/흉터",
+    title: "미백/모공",
     heroMessage: "결점 너머의 투명함, 피부 재생의 메커니즘을 정밀하게 재건합니다",
     description:
         "지우는 것을 넘어, 건강한 피부 바탕의 본연을 되찾아 드립니다.",
