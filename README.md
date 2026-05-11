@@ -75,10 +75,11 @@ src/
 |--------|------|------|
 | 메인 | `/` | 히어로 + 소개 + 시그니처 + 프로그램 + 위치 |
 | 병원 소개 | `/about` | 클리닉 철학, 프로세스, 의료진 |
-| 리프팅 | `/treatment/lifting` | 울쎄라, 리니어지 |
-| 타이트닝 | `/treatment/tightening` | 써마지, 포텐자, 레프톤 |
+| 리프팅 | `/treatment/lifting` | 울쎄라, 리니어지, 레프톤, 올타이트 |
+| 타이트닝 | `/treatment/tightening` | 써마지, 포텐자 |
 | 스킨부스터 | `/treatment/skin-booster` | 쥬베룩, 리쥬란, 스킨바이브 |
-| 색소·흉터 | `/treatment/texture` | 피코 토닝, 프락셀 |
+| 모공 | `/treatment/pore` | 포텐자 |
+| 미백/색소 | `/treatment/pigmentation` | 브라이톤, 레프톤, CO2 레이저 |
 | 보톡스&필러 | `/treatment/botox-filler` | 제오민, 레스틸렌 |
 | 전후사진 | `/gallery` | 카테고리 필터 + 비교 갤러리 |
 | 상담문의 | `/contact` | 문의 폼 + 연락처 |

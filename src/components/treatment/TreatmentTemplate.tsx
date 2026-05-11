@@ -572,7 +572,7 @@ export function TreatmentRecommendTargets({ data }: { data: TreatmentPageData })
                         RECOMMEND
                     </motion.p>
                     <motion.h2 variants={fadeInUp} className="korean-serif-title text-[34px] md:text-[46px] font-bold text-brand tracking-[-0.04em] leading-[1.1] break-keep">
-                        {data.title === "스킨부스터" || data.title === "줄기세포" ? (
+                        {data.title === "스킨부스터" || data.title === "줄기세포" || data.title === "미백/색소" ? (
                             <>{data.title}를 <br className="md:hidden" />추천 드리는 대상</>
                         ) : `${data.title}을 추천 드리는 대상`}
                     </motion.h2>
