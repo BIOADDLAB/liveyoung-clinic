@@ -358,6 +358,7 @@ export const TIGHTENING_DATA: TreatmentPageData = {
             analysisPoint: "개별 체형과 피부 탄력을 고려하여 가장 효과적인 약물 배합과 에너지 강도를 설정, 매끄러운 바디 라인을 완성합니다.",
             subItems: [
                 { name: "보톡스" },
+                { name: "레이저" }
             ]
         },
     ],

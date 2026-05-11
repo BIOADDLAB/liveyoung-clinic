@@ -45,11 +45,9 @@ export default function MediaPlaceholder({
             </span>
             {size && (
                 <span className="text-xs text-brand/40">
-                    권장: {size}
                 </span>
             )}
             <span className="text-xs text-brand/40">
-                내부 팀 전달 후 교체 예정
             </span>
         </div>
     );
