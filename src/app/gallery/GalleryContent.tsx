@@ -25,7 +25,7 @@ interface GalleryItem {
     created_at: string;
 }
 
-const CATEGORIES = ["전체", "얼굴/바디 컨투어링", "스킨부스터", "리프팅", "미백/모공/흉터", "줄기세포"];
+const CATEGORIES = ["전체", "얼굴/바디 컨투어링", "스킨부스터", "리프팅", "모공", "미백/색소", "줄기세포"];
 
 export default function GalleryContent() {
     const { isLoggedIn, isInitialized } = useAuth();

@@ -15,7 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: `${baseUrl}/treatment/lifting`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
         { url: `${baseUrl}/treatment/tightening`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
         { url: `${baseUrl}/treatment/skin-booster`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-        { url: `${baseUrl}/treatment/texture`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+        { url: `${baseUrl}/treatment/pore`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+        { url: `${baseUrl}/treatment/pigmentation`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
         { url: `${baseUrl}/treatment/stem-cell`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
         // 전후사진
         { url: `${baseUrl}/gallery`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },

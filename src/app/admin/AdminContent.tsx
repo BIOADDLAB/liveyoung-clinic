@@ -548,7 +548,7 @@ export default function AdminContent() {
                                         onChange={e => setEditingGallery({ ...editingGallery, category: e.target.value })}
                                         className="w-full rounded-xl border border-brand/10 px-4 py-3 outline-none"
                                     >
-                                        {["얼굴/바디 컨투어링", "스킨부스터", "리프팅", "미백/모공/흉터", "줄기세포"].map(c => (
+                                        {["얼굴/바디 컨투어링", "스킨부스터", "리프팅", "모공", "미백/색소", "줄기세포"].map(c => (
                                             <option key={c} value={c}>{c}</option>
                                         ))}
                                     </select>

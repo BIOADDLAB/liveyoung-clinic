@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 
 /**
- * TreatmentPopupSlider - 시그니처 시술 5종 팝업 슬라이더
+ * TreatmentPopupSlider - 시그니처 시술 팝업 슬라이더
  */
 const SLIDES = [
     {
@@ -39,15 +39,24 @@ const SLIDES = [
     },
     {
         id: 4,
-        enTitle: "TEXTURE",
-        koTitle: "미백/모공",
-        description: "지우는 것을 넘어, 건강한 피부 바탕의 본연을 되찾아 드립니다. 색소의 뿌리와 흉터의 깊이를 파악하는 심층 분석.",
-        href: "/treatment/texture",
+        enTitle: "PORE",
+        koTitle: "모공",
+        description: "포텐자를 중심으로 넓어진 모공과 거친 피부결을 정교하게 개선합니다.",
+        href: "/treatment/pore",
         imageUrl: "/images/popupslide/texture_popup.webp",
         mobileImageUrl: "/images/popupslide_m/texture_popup_m.webp"
     },
     {
         id: 5,
+        enTitle: "PIGMENTATION",
+        koTitle: "미백/색소",
+        description: "브라이톤, 레프톤, CO2 레이저로 맑고 균일한 피부톤과 색소 고민을 케어합니다.",
+        href: "/treatment/pigmentation",
+        imageUrl: "/images/popupslide/texture_popup.webp",
+        mobileImageUrl: "/images/popupslide_m/texture_popup_m.webp"
+    },
+    {
+        id: 6,
         enTitle: "STEM CELL",
         koTitle: "줄기세포",
         description: "손상된 피부 조직의 재생을 촉진하는 줄기세포 치료. 본연의 건강한 피부로 되돌리는 근본적인 솔루션입니다.",

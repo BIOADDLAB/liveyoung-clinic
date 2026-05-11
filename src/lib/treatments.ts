@@ -47,6 +47,89 @@ export interface TreatmentPageData {
     mobileBgImage?: string;
 }
 
+const POTENZA_TREATMENT: TreatmentItem = {
+    name: "포텐자",
+    enName: "Potenza",
+    description:
+        "마이크로 니들을 통해 피부 진피층에 고주파(RF) 에너지를 전달합니다. 모공, 흉터, 탄력을 동시에 개선하고 피부 재생을 강력하게 유도합니다.",
+    features: [
+        "10가지 이상 맞춤형 팁 사용",
+        "모공, 흉터, 탄력 동시 개선",
+        "진피층 고주파 에너지 전달",
+        "개인별 피부 상태 맞춤 시술"
+    ],
+    mediaLabel: "Potenza",
+    mediaSize: "Premium Standard",
+    imageUrl: "/images/signature_premium/texture/포텐자.png",
+    analysisPoint: "흉터의 깊이와 모공의 크기에 따라 니들의 깊이와 에너지 강도를 0.1mm 단위로 미세 조절합니다.",
+};
+
+const BRIGHTON_TREATMENT: TreatmentItem = {
+    name: "브라이톤",
+    enName: "Brighton",
+    description:
+        "색소 병변과 칙칙한 피부톤을 정밀하게 타겟팅하여 맑고 균일한 피부 바탕을 완성하는 미백·색소 케어 장비입니다.",
+    features: [
+        "기미, 잡티 등 색소 고민 개선",
+        "칙칙한 안색과 피부톤 정리",
+        "개인별 색소 깊이 맞춤 시술",
+        "맑고 투명한 피부 바탕 완성"
+    ],
+    mediaLabel: "Brighton",
+    mediaSize: "Premium Standard",
+    analysisPoint: "색소의 종류와 깊이, 피부톤의 균일도를 함께 분석하여 맞춤 미백·색소 프로토콜을 설계합니다.",
+};
+
+const LEPHTON_TREATMENT: TreatmentItem = {
+    name: "레프톤",
+    enName: "Lephton",
+    description:
+        "피부 톤업과 미세 탄력 개선에 최적화된 레이저입니다. 통증을 낮추면서도 안색 개선 효과가 뛰어나 맑고 건강한 피부 바탕을 완성합니다.",
+    features: [
+        "즉각적인 안색 개선 효과",
+        "피부 톤업 및 미세 탄력 강화",
+        "통증과 자극을 최소화한 시술",
+        "맑음의 미학을 담은 톤 케어"
+    ],
+    mediaLabel: "Lephton",
+    mediaSize: "Premium Standard",
+    imageUrl: "/images/signature_premium/texture/레프톤.png",
+    analysisPoint: "전체적인 피부 톤의 균일도와 탄력 저하 부위를 분석하여 커스텀 톤업·타이트닝 프로토콜을 적용합니다.",
+};
+
+const CO2_LASER_TREATMENT: TreatmentItem = {
+    name: "CO2 레이저",
+    enName: "CO2 Laser",
+    description:
+        "수분에 잘 흡수되는 파장을 이용해 점, 검버섯, 한관종 등 피부 병변을 정밀하게 제거합니다. 강력한 에너지로 깔끔한 제거와 빠른 회복을 돕습니다.",
+    features: [
+        "점, 검버섯, 비립종 정밀 제거",
+        "고출력 에너지 병변 타겟팅",
+        "주변 조직 손상 최소화",
+        "깨끗한 피부 바탕 완성"
+    ],
+    mediaLabel: "CO2 Laser",
+    mediaSize: "Premium Standard",
+    imageUrl: "/images/signature_premium/texture/co2.webp",
+    analysisPoint: "제거할 병변의 크기와 뿌리 깊이를 파악하여 흉터를 최소화하는 방향으로 섬세하게 레이저를 분사합니다.",
+};
+
+const ALLTIGHT_TREATMENT: TreatmentItem = {
+    name: "올타이트",
+    enName: "Alltight",
+    description:
+        "곧 입고 예정인 리프팅 장비로, 피부 탄력 저하와 무너진 라인을 정교하게 관리하는 프리미엄 타이트닝 솔루션입니다.",
+    features: [
+        "곧 입고 예정",
+        "피부 탄력 및 라인 개선",
+        "개인별 처짐 정도 맞춤 설계",
+        "프리미엄 타이트닝 리프팅"
+    ],
+    mediaLabel: "Alltight",
+    mediaSize: "Premium Standard",
+    analysisPoint: "입고 후 피부 두께와 탄력 저하 정도를 분석하여 리프팅 목적에 맞는 맞춤 프로토콜로 운영될 예정입니다.",
+};
+
 /** 1P - Lifting */
 export const LIFTING_DATA: TreatmentPageData = {
     slug: "lifting",
@@ -158,6 +241,8 @@ export const LIFTING_DATA: TreatmentPageData = {
             imageUrl: "/images/signature_premium/lifting/리니어지.png",
             analysisPoint: "0.1mm 단위의 미세 조절로 볼 패임 없는 섬세한 라인 정리.",
         },
+        LEPHTON_TREATMENT,
+        ALLTIGHT_TREATMENT,
     ],
     ctaMessage: "리프팅 상담 예약하기",
 };
@@ -437,29 +522,29 @@ export const SKIN_BOOSTER_DATA: TreatmentPageData = {
     ctaMessage: "스킨부스터 상담 예약하기",
 };
 
-/** 4P - Texture (미백/모공) */
-export const TEXTURE_DATA: TreatmentPageData = {
-    slug: "texture",
-    enCategory: "TEXTURE",
+/** 4P - Pore */
+export const PORE_DATA: TreatmentPageData = {
+    slug: "pore",
+    enCategory: "PORE",
     signatureText: "Premium",
-    title: "미백/모공",
-    heroMessage: "결점 너머의 투명함, 피부 재생의 메커니즘을 정밀하게 재건합니다",
+    title: "모공",
+    heroMessage: "넓어진 모공과 거친 피부결을 정교하게 재건합니다",
     description:
-        "지우는 것을 넘어, 건강한 피부 바탕의 본연을 되찾아 드립니다.",
+        "피부결을 정교하게 다듬어 매끄럽고 탄탄한 피부 바탕을 완성합니다.",
 
-    subTitle: "결점 너머의 투명함, 피부 재생의 메커니즘을 정밀하게 재건합니다.",
+    subTitle: "넓어진 모공과 거친 피부결을 정교하게 재건합니다.",
     introTitle: "DESIGN",
-    introDescription: "매끄럽고 깨끗한 피부결은 모든 아름다움의 기본 바탕이 됩니다. 리브영클리닉은 표피성의 얕은 색소부터 도달하기 힘든 진피층의 난치성 기미, 깊이 파인 흉터까지 피부 병변을 정확히 파악하여 깨끗한 톤과 결을 찾아주는 레이저 플랜을 디자인합니다.",
-    introKeywords: ["듀얼복합레이저", "색소지우개", "난치성기미치료", "피부톤업"],
+    introDescription: "매끄럽고 탄탄한 피부결은 모든 아름다움의 기본 바탕이 됩니다. 리브영클리닉은 모공의 크기와 피부결의 거칠기, 흉터 깊이를 정밀하게 분석하여 포텐자를 중심으로 맞춤형 모공 개선 플랜을 디자인합니다.",
+    introKeywords: ["포텐자", "모공타이트닝", "피부결개선", "맞춤RF"],
     introBullets: [
-        "지우는 것을 넘어, 건강한 피부 바탕의 본연을 되찾아 드립니다.",
-        "색소의 뿌리와 흉터의 깊이를 파악하는 심층분석 및 피부 타입별 맞춤 파라미터 세팅"
+        "넓어진 모공과 거친 결을 정교하게 조율해 건강한 피부 바탕을 되찾아 드립니다.",
+        "모공의 크기와 흉터의 깊이를 파악하는 심층 분석 및 피부 타입별 맞춤 파라미터 세팅"
     ],
     targetAreas: [
         {
-            title: "Tone Correction",
-            desc: "난치성 기미, 잡티, 흐릿한 안색 개선",
-            img: "/images/emoji/Signature/why/texture/Tone_Correction.webp"
+            title: "Pore Tightening",
+            desc: "나비존 모공, 늘어진 세로 모공 및 결 개선",
+            img: "/images/emoji/Signature/why/texture/Pore_Tightening.webp"
         },
         {
             title: "Scar Reconstruction",
@@ -467,23 +552,23 @@ export const TEXTURE_DATA: TreatmentPageData = {
             img: "/images/emoji/Signature/why/texture/Scar_Reconstruction.webp"
         },
         {
-            title: "Pore Tightening",
-            desc: "나비존 모공, 늘어진 세로 모공 및 결 개선",
-            img: "/images/emoji/Signature/why/texture/Pore_Tightening.webp"
+            title: "Texture Refinement",
+            desc: "거칠어진 피부결과 탄력 저하 동시 개선",
+            img: "/images/emoji/Signature/why/texture/Tone_Correction.webp"
         }
     ],
     keyPoints: [
         {
-            title: "미적 디자인",
-            description: "단순히 흉터를 메우는 것이 아니라, 전체적인 피부 결의 조화와 매끄러운 텍스처를 구현합니다."
+            title: "정밀 모공 분석",
+            description: "모공의 위치와 크기, 피부결의 거칠기를 함께 분석하여 필요한 부위에만 에너지를 정교하게 전달합니다."
         },
         {
-            title: "정교한 레이어링",
-            description: "색소의 깊이에 따라 레이저를 다르게 배분하는 원장님만의 복합 치료 프로토콜을 적용합니다."
+            title: "맞춤 RF 설계",
+            description: "피부 두께와 민감도에 맞춰 포텐자 팁과 에너지 강도를 조절하는 맞춤 프로토콜을 적용합니다."
         },
         {
             title: "글로벌 스탠다드",
-            description: "원장님과 영어 상담이 가능한 스태프가 상주하여 외국인 환자의 미세한 피부 고민까지 완벽히 소통합니다."
+            description: "원장님과 영어 상담이 가능한 스태프가 상주하여 외국인 환자의 미세한 모공 고민까지 세밀하게 소통합니다."
         }
     ],
     precautions: [
@@ -495,89 +580,99 @@ export const TEXTURE_DATA: TreatmentPageData = {
     mobileBgImage: "/images/cover_m/Signature 시술/미백_모공_흉터_m.webp",
     recommendTargets: [
         {
-            title: "색소 고민 해결",
-            description: "기미, 잡티 등 얼룩덜룩한 피부 톤을 \n맑게 개선하고 싶으신 분",
-            img: "/images/emoji/Signature/recommend/texture/색소 고민 해결.webp"
-        },
-        {
             title: "매끄러운 피부 결",
             description: "여드름 흉터나 패인 자국 등 거친 \n피부 텍스처가 고민이신 분",
             img: "/images/emoji/Signature/recommend/texture/매끄러운 피부 결.webp"
         },
         {
-            title: "투명한 피부 완성",
-            description: "색소의 뿌리부터 치료하여 투명한\n 피부 바탕을 원하시는 분",
+            title: "탄탄한 모공 케어",
+            description: "늘어진 모공과 피부 탄력을 함께\n 개선하고 싶으신 분",
             img: "/images/emoji/Signature/recommend/texture/투명한 피부 완성.webp"
+        },
+        {
+            title: "정교한 맞춤 시술",
+            description: "피부 상태에 맞춘 포텐자 시술을\n 원하시는 분",
+            img: "/images/emoji/Signature/recommend/texture/색소 고민 해결.webp"
         }
     ],
     treatments: [
-        {
-            name: "피코",
-            enName: "Pico Toning",
-            description:
-                "초강력 파장으로 타겟 색소 입자를 잘게 파괴합니다. 주변 조직 손상을 최소화하며 기미, 잡티 등 색소만을 선택적으로 제거하여 투명한 안색을 선사합니다.",
-            features: [
-                "기미, 잡티 선택적 제거",
-                "초강력 파장 색소 입자 파괴",
-                "주변 정상 조직 손상 최소화",
-                "맑고 투명한 피부톤 개선"
-            ],
-            mediaLabel: "Pico Toning",
-            mediaSize: "Premium Standard",
-            imageUrl: "/images/signature_premium/texture/피코.png",
-            analysisPoint: "색소 병변의 종류와 깊이를 분석하여 기미의 뿌리까지 확실하게 타겟팅하는 정밀 토닝 플랜을 설계합니다.",
-        },
-        {
-            name: "포텐자",
-            enName: "Potenza",
-            description:
-                "마이크로 니들을 통해 피부 진피층에 고주파(RF) 에너지를 전달합니다. 모공, 흉터, 탄력을 동시에 개선하고 피부 재생을 강력하게 유도합니다.",
-            features: [
-                "10가지 이상 맞춤형 팁 사용",
-                "모공, 흉터, 탄력 동시 개선",
-                "진피층 고주파 에너지 전달",
-                "개인별 피부 상태 맞춤 시술"
-            ],
-            mediaLabel: "Potenza",
-            mediaSize: "Premium Standard",
-            imageUrl: "/images/signature_premium/texture/포텐자.png",
-            analysisPoint: "흉터의 깊이와 모공의 크기에 따라 니들의 깊이와 에너지 강도를 0.1mm 단위로 미세 조절합니다.",
-        },
-        {
-            name: "레프톤",
-            enName: "Lephton",
-            description:
-                "피부 톤업과 미세 탄력 개선에 최적화된 레이저입니다. 통증을 낮추면서도 안색 개선 효과가 뛰어나 맑고 건강한 피부 바탕을 완성합니다.",
-            features: [
-                "즉각적인 안색 개선 효과",
-                "피부 톤업 및 미세 탄력 강화",
-                "통증과 자극을 최소화한 시술",
-                "맑음의 미학을 담은 톤 케어"
-            ],
-            mediaLabel: "Lephton",
-            mediaSize: "Premium Standard",
-            imageUrl: "/images/signature_premium/texture/레프톤.png",
-            analysisPoint: "전체적인 피부 톤의 균일도를 분석하여 칙칙한 부위를 집중 밝혀주는 커스텀 화이트닝 프로토콜을 적용합니다.",
-        },
-        {
-            name: "CO2 레이저",
-            enName: "CO2 Laser",
-            description:
-                "수분에 잘 흡수되는 파장을 이용해 점, 검버섯, 한관종 등 피부 병변을 정밀하게 제거합니다. 강력한 에너지로 깔끔한 제거와 빠른 회복을 돕습니다.",
-            features: [
-                "점, 검버섯, 비립종 정밀 제거",
-                "고출력 에너지 병변 타겟팅",
-                "주변 조직 손상 최소화",
-                "깨끗한 피부 바탕 완성"
-            ],
-            mediaLabel: "CO2 Laser",
-            mediaSize: "Premium Standard",
-            imageUrl: "/images/signature_premium/texture/co2.webp",
-            analysisPoint: "제거할 병변의 크기와 뿌리 깊이를 파악하여 흉터를 최소화하는 방향으로 섬세하게 레이저를 분사합니다.",
-        },
+        POTENZA_TREATMENT,
     ],
-    ctaMessage: "색소 & 흉터 모공 상담 예약하기",
+    ctaMessage: "모공 상담 예약하기",
 };
+
+/** 5P - Pigmentation */
+export const PIGMENTATION_DATA: TreatmentPageData = {
+    ...PORE_DATA,
+    slug: "pigmentation",
+    enCategory: "PIGMENTATION",
+    title: "미백/색소",
+    heroMessage: "맑고 균일한 피부톤, 색소의 깊이까지 정밀하게 케어합니다",
+    description: "색소의 원인과 깊이를 분석해 밝고 투명한 피부 바탕을 완성합니다.",
+    subTitle: "맑고 균일한 피부톤, 색소의 깊이까지 정밀하게 케어합니다.",
+    introDescription: "깨끗하고 균일한 피부톤은 인상을 밝게 만드는 핵심입니다. 리브영클리닉은 브라이톤, 레프톤, CO2 레이저를 통해 기미, 잡티, 칙칙한 안색, 피부 병변까지 피부 상태에 맞춰 정교하게 케어합니다.",
+    introKeywords: ["브라이톤", "레프톤", "CO2레이저", "미백색소케어"],
+    introBullets: [
+        "색소의 뿌리와 피부톤의 불균형을 함께 분석해 맑은 피부 바탕을 되찾아 드립니다.",
+        "색소 종류와 깊이에 맞춘 레이저 선택 및 피부 타입별 맞춤 파라미터 세팅"
+    ],
+    targetAreas: [
+        {
+            title: "Tone Correction",
+            desc: "기미, 잡티, 흐릿한 안색 개선",
+            img: "/images/emoji/Signature/why/texture/Tone_Correction.webp"
+        },
+        {
+            title: "Pigment Care",
+            desc: "색소 깊이와 피부톤 불균형 맞춤 케어",
+            img: "/images/emoji/Signature/why/texture/Pore_Tightening.webp"
+        },
+        {
+            title: "Spot Removal",
+            desc: "점, 검버섯, 비립종 등 병변 정밀 제거",
+            img: "/images/emoji/Signature/why/texture/Scar_Reconstruction.webp"
+        }
+    ],
+    keyPoints: [
+        {
+            title: "색소 깊이 분석",
+            description: "표피성 색소부터 깊은 색소 병변까지 원인을 분석하여 필요한 장비와 에너지 강도를 정교하게 선택합니다."
+        },
+        {
+            title: "복합 레이저 설계",
+            description: "브라이톤, 레프톤, CO2 레이저를 피부 상태에 맞게 조합해 톤업과 병변 개선을 함께 설계합니다."
+        },
+        {
+            title: "글로벌 스탠다드",
+            description: "원장님과 영어 상담이 가능한 스태프가 상주하여 외국인 환자의 미백·색소 고민까지 세밀하게 소통합니다."
+        }
+    ],
+    recommendTargets: [
+        {
+            title: "색소 고민 해결",
+            description: "기미, 잡티 등 얼룩덜룩한 피부 톤을 \n맑게 개선하고 싶으신 분",
+            img: "/images/emoji/Signature/recommend/texture/색소 고민 해결.webp"
+        },
+        {
+            title: "투명한 피부 완성",
+            description: "색소의 뿌리부터 치료하여 투명한\n 피부 바탕을 원하시는 분",
+            img: "/images/emoji/Signature/recommend/texture/투명한 피부 완성.webp"
+        },
+        {
+            title: "정밀 병변 제거",
+            description: "점, 검버섯, 비립종 등 피부 병변을\n 섬세하게 개선하고 싶으신 분",
+            img: "/images/emoji/Signature/recommend/texture/매끄러운 피부 결.webp"
+        }
+    ],
+    treatments: [
+        BRIGHTON_TREATMENT,
+        LEPHTON_TREATMENT,
+        CO2_LASER_TREATMENT,
+    ],
+    ctaMessage: "미백/색소 상담 예약하기",
+};
+
+export const TEXTURE_DATA = PORE_DATA;
 
 /** 5P - Stem Cell (노바스템 줄기세포) */
 export const STEM_CELL_DATA: TreatmentPageData = {
@@ -678,6 +773,8 @@ export const TREATMENT_DATA_MAP: Record<string, TreatmentPageData> = {
     lifting: LIFTING_DATA,
     tightening: TIGHTENING_DATA,
     "skin-booster": SKIN_BOOSTER_DATA,
+    pore: PORE_DATA,
+    pigmentation: PIGMENTATION_DATA,
     texture: TEXTURE_DATA,
     "stem-cell": STEM_CELL_DATA,
 };

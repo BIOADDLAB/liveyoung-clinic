@@ -203,8 +203,8 @@ export function TreatmentIntro({ data }: { data: TreatmentPageData }) {
  * TreatmentDetail - 개별 시술 상세 카드 (KSY 시그니처 스타일로 개편)
  */
 export function TreatmentDetail({ data }: { data: TreatmentPageData }) {
-    // 리프팅, 타이트닝, 스킨부스터, 텍스처, 보톡스&필러 페이지일 경우 프리미엄 그리드 스타일 (Image 1) 적용
-    const useGridCardStyle = data.slug === "lifting" || data.slug === "tightening" || data.slug === "skin-booster" || data.slug === "texture";
+    // 리프팅, 타이트닝, 스킨부스터, 모공/색소 페이지일 경우 프리미엄 그리드 스타일 (Image 1) 적용
+    const useGridCardStyle = data.slug === "lifting" || data.slug === "tightening" || data.slug === "skin-booster" || data.slug === "pore" || data.slug === "pigmentation" || data.slug === "texture";
 
     if (data.slug === "stem-cell") {
         return (

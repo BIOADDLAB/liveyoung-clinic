@@ -25,7 +25,8 @@ export const NAV_MENUS = [
             { label: "얼굴/바디 컨투어링", href: "/treatment/tightening" },
             { label: "스킨부스터", href: "/treatment/skin-booster" },
             { label: "리프팅", href: "/treatment/lifting" },
-            { label: "미백/모공", href: "/treatment/texture" },
+            { label: "모공", href: "/treatment/pore" },
+            { label: "미백/색소", href: "/treatment/pigmentation" },
         ],
     },
     {
@@ -162,9 +163,9 @@ export const CURATED_PLAN_PROGRAMS = [
     {
         id: "texture-program",
         enSubtitle: "TEXTURE PROGRAM",
-        title: "텍스처 개선 프로그램",
-        description: "피코 토닝, 프락셀로 모공, 색소, 흉터를 동시에 개선하여 매끈한 피부결을 만들어드립니다.",
-        href: "/treatment/texture",
+        title: "모공 개선 프로그램",
+        description: "포텐자로 넓어진 모공과 거친 피부결을 정교하게 개선합니다.",
+        href: "/treatment/pore",
         mediaLabel: "텍스처 프로그램 이미지",
         mediaSize: "800 × 600px",
     },
