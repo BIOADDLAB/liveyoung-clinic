@@ -617,26 +617,34 @@ export function TreatmentFAQ({ data }: { data: TreatmentPageData }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAuto, setIsAuto] = useState(true);
     const precautions = data.precautions || [];
+    const faqItems = data.faqs?.length
+        ? data.faqs
+        : precautions.map((precaution) => ({
+            question: "시술 후 주의사항",
+            answer: precaution,
+        }));
 
     useEffect(() => {
-        if (!isAuto || precautions.length === 0) return;
+        if (!isAuto || faqItems.length === 0) return;
         const timer = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % precautions.length);
+            setCurrentIndex((prev) => (prev + 1) % faqItems.length);
         }, 5000);
         return () => clearInterval(timer);
-    }, [isAuto, precautions.length]);
+    }, [isAuto, faqItems.length]);
 
-    if (precautions.length === 0) return null;
+    if (faqItems.length === 0) return null;
 
     const nextSlide = () => {
         setIsAuto(false);
-        setCurrentIndex((prev) => (prev + 1) % precautions.length);
+        setCurrentIndex((prev) => (prev + 1) % faqItems.length);
     };
 
     const prevSlide = () => {
         setIsAuto(false);
-        setCurrentIndex((prev) => (prev - 1 + precautions.length) % precautions.length);
+        setCurrentIndex((prev) => (prev - 1 + faqItems.length) % faqItems.length);
     };
+
+    const currentFaq = faqItems[currentIndex];
 
     return (
         <section className="relative min-h-[650px] md:h-[750px] w-full overflow-hidden bg-surface">
@@ -699,7 +707,7 @@ export function TreatmentFAQ({ data }: { data: TreatmentPageData }) {
                                             transition={{ duration: 0.6, delay: 0.2 }}
                                             className="text-[28px] md:text-[34px] font-bold text-white leading-tight tracking-[-0.04em] break-keep"
                                         >
-                                            시술 궁금증
+                                            {currentFaq.question}
                                         </motion.h3>
 
                                         <motion.div
@@ -708,7 +716,7 @@ export function TreatmentFAQ({ data }: { data: TreatmentPageData }) {
                                             transition={{ duration: 0.6, delay: 0.4 }}
                                         >
                                             <p className="mt-8 text-[15px] md:text-[17px] font-normal leading-[1.8] text-white/70 tracking-[-0.026em] break-keep">
-                                                {precautions[currentIndex]}
+                                                {currentFaq.answer}
                                             </p>
 
                                             <div className="mt-10">
@@ -754,7 +762,7 @@ export function TreatmentFAQ({ data }: { data: TreatmentPageData }) {
                                 <div className="flex items-baseline gap-1.5 font-bold text-white tracking-widest">
                                     <span className="text-[26px]">{currentIndex + 1}</span>
                                     <span className="text-white/20 text-[20px]">/</span>
-                                    <span className="text-white/40 text-[20px]">{precautions.length}</span>
+                                    <span className="text-white/40 text-[20px]">{faqItems.length}</span>
                                 </div>
                             </div>
                         </div>
