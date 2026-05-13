@@ -78,6 +78,7 @@ const BRIGHTON_TREATMENT: TreatmentItem = {
     ],
     mediaLabel: "Brighton",
     mediaSize: "Premium Standard",
+    imageUrl: "/images/signature_premium/texture/브라이톤.jpeg",
     analysisPoint: "색소의 종류와 깊이, 피부톤의 균일도를 함께 분석하여 맞춤 미백·색소 프로토콜을 설계합니다.",
 };
 
@@ -119,16 +120,16 @@ const ALLTIGHT_TREATMENT: TreatmentItem = {
     name: "올타이트",
     enName: "Alltight",
     description:
-        "곧 입고 예정인 리프팅 장비로, 피부 탄력 저하와 무너진 라인을 정교하게 관리하는 프리미엄 타이트닝 솔루션입니다.",
+        "리프팅 장비로, 피부 탄력 저하와 무너진 라인을 정교하게 관리하는 프리미엄 타이트닝 솔루션입니다.",
     features: [
-        "곧 입고 예정",
         "피부 탄력 및 라인 개선",
         "개인별 처짐 정도 맞춤 설계",
         "프리미엄 타이트닝 리프팅"
     ],
     mediaLabel: "Alltight",
     mediaSize: "Premium Standard",
-    analysisPoint: "입고 후 피부 두께와 탄력 저하 정도를 분석하여 리프팅 목적에 맞는 맞춤 프로토콜로 운영될 예정입니다.",
+    imageUrl: "/images/signature_premium/lifting/올타이트.png",
+    analysisPoint: "피부 두께와 탄력 저하 정도를 분석하여 리프팅 목적에 맞는 맞춤 프로토콜로 운영됩니다.",
 };
 
 /** 1P - Lifting */
