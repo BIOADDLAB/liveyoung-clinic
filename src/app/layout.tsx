@@ -7,7 +7,7 @@ import ConditionalSections from "@/components/layout/ConditionalSections";
 export const metadata: Metadata = {
   title: "리브영의원 | Live Young Clinic",
   description:
-    "우리는 시술을 팔지 않고, 당신의 얼굴을 분석합니다. Needs Mapping과 Curated Plan 시스템으로 맞춤 시술을 제공합니다.",
+    "당신의 고민과 얼굴을 정밀하게 분석합니다. Needs Mapping → Curated Plan → 맞춤 시술.",
   keywords: [
     "리브영의원",
     "피부과",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "리브영의원 | Live Young Clinic",
-    description: "당신의 얼굴을 분석합니다. Needs Mapping → Curated Plan 맞춤 시술.",
+    description: "당신의 고민과 얼굴을 정밀하게 분석합니다. Needs Mapping → Curated Plan → 맞춤 시술.",
     type: "website",
     locale: "ko_KR",
   },

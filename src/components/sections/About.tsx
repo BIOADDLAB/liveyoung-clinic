@@ -71,9 +71,9 @@ export default function About() {
                                 LIVE YOUNG CLINIC
                             </span>
                             <h3 className="korean-serif-title text-[32px] font-bold leading-[1.1] tracking-[-0.04em] text-brand md:text-[46px]">
-                                우리는 시술을 팔지 않고
+                                당신의 고민과 얼굴을 정밀하게 분석하여
                                 <br />
-                                당신의 얼굴을 분석합니다
+                                꼭 필요한 솔루션만 제안합니다.
                             </h3>
                         </div>
 
