@@ -37,7 +37,7 @@ export default function PopupNotice() {
                     const now = Date.now();
                     if (now - dismissedTime < 86400000) return;
                 }
-                setTimeout(() => setIsOpen(true), 1000);
+                setTimeout(() => setIsOpen(true), 150);
             }
         };
 
@@ -66,10 +66,10 @@ export default function PopupNotice() {
                     onClick={handleClose}
                 >
                     <motion.div
-                        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                        initial={{ scale: 0.97, opacity: 0, y: 8 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                        exit={{ scale: 0.97, opacity: 0, y: 8 }}
+                        transition={{ duration: 0.18, ease: "easeOut" }}
                         onClick={(e) => e.stopPropagation()}
                         className="w-full max-w-[450px] overflow-hidden rounded-2xl bg-surface shadow-2xl border border-brand/5"
                     >
