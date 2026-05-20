@@ -51,6 +51,13 @@ export const NAV_MENUS = [
         ],
     },
     {
+        label: "애프터케어",
+        href: "/precautions",
+        subMenus: [
+            { label: "시술후 주의사항", href: "/precautions" },
+        ],
+    },
+    {
         label: "회원서비스",
         href: "/login",
         subMenus: [

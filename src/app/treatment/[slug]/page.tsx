@@ -8,7 +8,6 @@ import {
     TreatmentTargetAreas,
     TreatmentKeyPoints,
     TreatmentRecommendTargets,
-    TreatmentPrecautions,
     TreatmentFAQ,
 } from "@/components/treatment/TreatmentTemplate";
 import { TREATMENT_DATA_MAP } from "@/lib/treatments";
@@ -57,7 +56,6 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
             <TreatmentTargetAreas data={data} />
             <TreatmentKeyPoints data={data} />
             <TreatmentRecommendTargets data={data} />
-            <TreatmentPrecautions data={data} />
             <TreatmentFAQ data={data} />
         </div>
     );

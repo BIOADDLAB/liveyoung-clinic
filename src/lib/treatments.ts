@@ -152,6 +152,8 @@ const PRECAUTION_GUIDES = {
     }
 } satisfies Record<string, { title: string; items: string[] }>;
 
+export const ALL_PRECAUTION_GROUPS = Object.values(PRECAUTION_GUIDES);
+
 const POTENZA_TREATMENT: TreatmentItem = {
     name: "포텐자",
     enName: "Potenza",

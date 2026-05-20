@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
@@ -616,10 +616,22 @@ export function TreatmentRecommendTargets({ data }: { data: TreatmentPageData })
 export function TreatmentPrecautions({ data }: { data: TreatmentPageData }) {
     const groups = data.precautionGroups || [];
     const [activeIndex, setActiveIndex] = useState(0);
+    const detailRef = useRef<HTMLDivElement>(null);
 
     if (groups.length === 0) return null;
 
     const activeGroup = groups[activeIndex];
+
+    const handleSelectGroup = (idx: number) => {
+        setActiveIndex(idx);
+
+        window.requestAnimationFrame(() => {
+            detailRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        });
+    };
 
     return (
         <section className="relative overflow-hidden bg-brand py-[90px] md:py-[170px]">
@@ -672,7 +684,7 @@ export function TreatmentPrecautions({ data }: { data: TreatmentPageData }) {
                             </div>
                         </div>
 
-                        <div className="flex min-w-0 snap-x gap-3 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
+                        <div className="grid min-w-0 grid-cols-2 gap-2.5 md:grid-cols-3 lg:flex lg:flex-col lg:gap-3">
                             {groups.map((group, idx) => {
                                 const isActive = idx === activeIndex;
 
@@ -680,17 +692,17 @@ export function TreatmentPrecautions({ data }: { data: TreatmentPageData }) {
                                     <button
                                         key={group.title}
                                         type="button"
-                                        onClick={() => setActiveIndex(idx)}
-                                        className={`group flex min-w-[150px] snap-start items-center justify-between rounded-2xl px-4 py-3.5 text-left transition-all duration-300 md:min-w-[180px] md:px-5 md:py-4 lg:min-w-0 ${isActive
+                                        onClick={() => handleSelectGroup(idx)}
+                                        className={`group flex min-w-0 items-center justify-between rounded-2xl px-3.5 py-3 text-left transition-all duration-300 md:px-5 md:py-4 lg:min-w-0 ${isActive
                                             ? "bg-white text-brand shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
                                             : "bg-white/[0.04] text-white/55 hover:bg-white/[0.08] hover:text-white"
                                             }`}
                                     >
-                                        <span className="min-w-0 text-[14px] font-bold tracking-[-0.03em] md:text-[15px]">{group.title}</span>
+                                        <span className="min-w-0 text-[13px] font-bold tracking-[-0.04em] break-words md:text-[15px]">{group.title}</span>
                                         <Icon
                                             icon="ph:caret-right-bold"
-                                            width={14}
-                                            height={14}
+                                            width={12}
+                                            height={12}
                                             className={isActive ? "text-[#C8A96A]" : "text-white/25 transition-colors group-hover:text-white/60"}
                                         />
                                     </button>
@@ -700,11 +712,12 @@ export function TreatmentPrecautions({ data }: { data: TreatmentPageData }) {
                     </motion.div>
 
                     <motion.div
+                        ref={detailRef}
                         key={activeGroup.title}
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.45, ease: "easeOut" }}
-                        className="min-w-0 overflow-hidden rounded-[28px] border border-white/10 bg-[#F2F1ED] shadow-[0_30px_80px_rgba(0,0,0,0.22)] md:rounded-[36px]"
+                        className="scroll-mt-[120px] min-w-0 overflow-hidden rounded-[28px] border border-white/10 bg-[#F2F1ED] shadow-[0_30px_80px_rgba(0,0,0,0.22)] md:rounded-[36px]"
                     >
                         <div className="border-b border-brand/10 bg-white/55 px-5 py-6 md:px-10 md:py-7">
                             <p className="mb-2 text-[11px] font-black uppercase tracking-[0.22em] text-brand-muted">After Care</p>

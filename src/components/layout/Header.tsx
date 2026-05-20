@@ -10,6 +10,22 @@ import { Lock, User, LogOut, LayoutDashboard } from "lucide-react";
 import { Icon } from "@iconify/react";
 import { useAuth } from "@/contexts/AuthContext";
 
+type GoogleTranslateWindow = Window & {
+    googleTranslateElementInit?: () => void;
+    google?: {
+        translate?: {
+            TranslateElement?: new (
+                options: { pageLanguage: string; autoDisplay: boolean },
+                elementId: string
+            ) => unknown;
+        };
+    };
+};
+
+function writeDocumentCookie(cookie: string) {
+    document.cookie = cookie;
+}
+
 /**
  * Header 컴포넌트
  * 네비게이션 드롭다운(메가메뉴) + 모바일 햄버거 메뉴 포함
@@ -27,11 +43,6 @@ export default function Header() {
     // 관리자 페이지 등 히어로 배너가 없는 곳에서는 헤더를 상시 노출
     const isAdminPage = pathname?.startsWith("/admin");
     const isSolid = isScrolled || isMobileMenuOpen || isHovered || isAdminPage;
-
-    // 페이지 이동 시 모바일 메뉴 자동 닫기
-    useEffect(() => {
-        setIsMobileMenuOpen(false);
-    }, [pathname]);
 
     // 모바일 메뉴 열릴 때 body 스크롤 방지
     useEffect(() => {
@@ -88,9 +99,12 @@ export default function Header() {
             document.body.appendChild(addScript);
         }
 
-        (window as any).googleTranslateElementInit = () => {
-            if (!(window as any).google?.translate?.TranslateElement) return;
-            new (window as any).google.translate.TranslateElement({
+        const translateWindow = window as GoogleTranslateWindow;
+
+        translateWindow.googleTranslateElementInit = () => {
+            const TranslateElement = translateWindow.google?.translate?.TranslateElement;
+            if (!TranslateElement) return;
+            new TranslateElement({
                 pageLanguage: 'ko',
                 autoDisplay: false
             }, 'google_translate_element');
@@ -113,6 +127,7 @@ export default function Header() {
     // 동일 페이지 클릭 시 최상단 즉시 이동 함수
     const handleSamePageScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         setIsHovered(false); // 항목 클릭 시 메가메뉴 즉시 닫기
+        setIsMobileMenuOpen(false);
         if (pathname === href) {
             window.scrollTo(0, 0);
         }
@@ -121,12 +136,12 @@ export default function Header() {
     // 번역 실행 함수 (가장 안정적인 쿠키 방식 원복: 새로고침을 통해 전체 번역 적용)
     const handleTranslate = (langCode: string) => {
         if (langCode === 'ko') {
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
+            writeDocumentCookie("googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;");
+            writeDocumentCookie(`googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`);
         } else {
             const cookieValue = `/ko/${langCode}`;
-            document.cookie = `googtrans=${cookieValue}; path=/`;
-            document.cookie = `googtrans=${cookieValue}; path=/; domain=${window.location.hostname}`;
+            writeDocumentCookie(`googtrans=${cookieValue}; path=/`);
+            writeDocumentCookie(`googtrans=${cookieValue}; path=/; domain=${window.location.hostname}`);
         }
         window.location.reload();
     };
@@ -174,7 +189,7 @@ export default function Header() {
                                 <Link
                                     href={menu.href}
                                     onClick={(e) => handleSamePageScroll(e, menu.href)}
-                                    className={`relative text-[16px] font-semibold tracking-[-0.42px] transition-colors py-2 ${isSolid
+                                    className={`relative whitespace-pre-line text-center text-[15px] font-semibold leading-tight tracking-[-0.42px] transition-colors py-2 xl:text-[16px] ${isSolid
                                         ? "text-brand group-hover:text-accent"
                                         : "text-white/90 group-hover:text-white"
                                         }`}
@@ -362,7 +377,7 @@ export default function Header() {
                                         onClick={() => toggleAccordion(menu.label)}
                                         className="flex h-full w-full items-center justify-between py-5 text-left text-[20px] font-semibold text-brand"
                                     >
-                                        <span>{menu.label}</span>
+                                        <span className="whitespace-pre-line">{menu.label}</span>
                                         <span className={`text-xl font-light transition-transform duration-300 ${activeAccordion === menu.label ? "rotate-180" : ""}`}>
                                             ↓
                                         </span>
