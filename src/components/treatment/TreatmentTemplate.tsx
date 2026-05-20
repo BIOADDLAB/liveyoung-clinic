@@ -6,7 +6,7 @@ import { motion, Variants, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 import MediaPlaceholder from "@/components/ui/MediaPlaceholder";
 import PageHeader from "@/components/layout/PageHeader";
-import type { TreatmentPageData } from "@/lib/treatments";
+import type { TreatmentItem, TreatmentPageData } from "@/lib/treatments";
 
 // 애니메이션 Variants (KSY 스타일 페이드업)
 const fadeInUp: Variants = {
@@ -27,7 +27,7 @@ const staggerContainer: Variants = {
 /**
  * TreatmentCard - 개별 시술 3D 플립 카드 (내부 컴포넌트)
  */
-function TreatmentCard({ item, idx, data }: { item: any; idx: number; data: TreatmentPageData }) {
+function TreatmentCard({ item, idx, data }: { item: TreatmentItem; idx: number; data: TreatmentPageData }) {
     const [isFlipped, setIsFlipped] = useState(false);
 
     return (
@@ -70,7 +70,7 @@ function TreatmentCard({ item, idx, data }: { item: any; idx: number; data: Trea
                                         <h3 className="text-2xl md:text-3xl font-bold drop-shadow-lg">{item.name}</h3>
                                         <div className="mt-5 flex flex-col items-center">
                                             <div className="flex flex-col items-start gap-2.5 text-[13px] md:text-[15px] text-white/95 font-bold drop-shadow-md">
-                                                {item.subItems.map((sub: any, sIdx: number) => (
+                                                {item.subItems.map((sub, sIdx) => (
                                                     <div key={sIdx} className="flex items-center gap-2">
                                                         <span>- {sub.name}</span>
                                                     </div>
@@ -611,6 +611,133 @@ export function TreatmentRecommendTargets({ data }: { data: TreatmentPageData })
 }
 
 /**
+ * TreatmentPrecautions - 시술별 상세 주의사항
+ */
+export function TreatmentPrecautions({ data }: { data: TreatmentPageData }) {
+    const groups = data.precautionGroups || [];
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    if (groups.length === 0) return null;
+
+    const activeGroup = groups[activeIndex];
+
+    return (
+        <section className="relative overflow-hidden bg-brand py-[90px] md:py-[170px]">
+            <div className="absolute left-[-10%] top-[-20%] h-[420px] w-[420px] rounded-full bg-white/[0.04] blur-3xl" />
+            <div className="absolute bottom-[-20%] right-[-8%] h-[520px] w-[520px] rounded-full bg-[#C8A96A]/[0.08] blur-3xl" />
+
+            <div className="relative z-10 mx-auto w-full max-w-[1400px] min-w-0 px-4 md:px-8">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-80px" }}
+                    variants={staggerContainer}
+                    className="mb-16 text-center md:mb-20"
+                >
+                    <motion.p
+                        variants={fadeInUp}
+                        className="mb-3 text-[13px] font-black uppercase tracking-[0.2em] text-[#C8A96A]"
+                    >
+                        Precautions
+                    </motion.p>
+                    <motion.h2
+                        variants={fadeInUp}
+                        className="korean-serif-title text-[32px] font-bold leading-[1.12] tracking-[-0.04em] text-white break-words md:text-[48px]"
+                    >
+                        시술 후 주의사항
+                    </motion.h2>
+                    <motion.p
+                        variants={fadeInUp}
+                        className="mx-auto mt-5 max-w-[620px] text-[14px] font-medium leading-[1.8] text-white/55 break-words md:mt-6 md:text-[17px] md:break-keep"
+                    >
+                        시술 종류에 따라 회복 과정과 관리 방법이 달라질 수 있습니다. 안내된 내용을 확인하시고 불편감이 지속되면 병원으로 문의해 주세요.
+                    </motion.p>
+                </motion.div>
+
+                <div className="grid min-w-0 gap-8 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-12">
+                    <motion.div
+                        initial={{ opacity: 0, x: -24 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-80px" }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="min-w-0 rounded-[28px] border border-white/10 bg-white/[0.04] p-4 backdrop-blur-xl md:rounded-[32px] md:p-5"
+                    >
+                        <div className="mb-5 flex items-center gap-3 px-2 pt-2">
+                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-[#C8A96A]">
+                                <Icon icon="ph:warning-circle-fill" width={20} height={20} />
+                            </span>
+                            <div>
+                                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-white/35">Care Guide</p>
+                                <p className="text-[18px] font-bold text-white">시술 선택</p>
+                            </div>
+                        </div>
+
+                        <div className="flex min-w-0 snap-x gap-3 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
+                            {groups.map((group, idx) => {
+                                const isActive = idx === activeIndex;
+
+                                return (
+                                    <button
+                                        key={group.title}
+                                        type="button"
+                                        onClick={() => setActiveIndex(idx)}
+                                        className={`group flex min-w-[150px] snap-start items-center justify-between rounded-2xl px-4 py-3.5 text-left transition-all duration-300 md:min-w-[180px] md:px-5 md:py-4 lg:min-w-0 ${isActive
+                                            ? "bg-white text-brand shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+                                            : "bg-white/[0.04] text-white/55 hover:bg-white/[0.08] hover:text-white"
+                                            }`}
+                                    >
+                                        <span className="min-w-0 text-[14px] font-bold tracking-[-0.03em] md:text-[15px]">{group.title}</span>
+                                        <Icon
+                                            icon="ph:caret-right-bold"
+                                            width={14}
+                                            height={14}
+                                            className={isActive ? "text-[#C8A96A]" : "text-white/25 transition-colors group-hover:text-white/60"}
+                                        />
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        key={activeGroup.title}
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.45, ease: "easeOut" }}
+                        className="min-w-0 overflow-hidden rounded-[28px] border border-white/10 bg-[#F2F1ED] shadow-[0_30px_80px_rgba(0,0,0,0.22)] md:rounded-[36px]"
+                    >
+                        <div className="border-b border-brand/10 bg-white/55 px-5 py-6 md:px-10 md:py-7">
+                            <p className="mb-2 text-[11px] font-black uppercase tracking-[0.22em] text-brand-muted">After Care</p>
+                            <h3 className="text-[24px] font-bold tracking-[-0.04em] text-brand break-words md:text-[38px]">
+                                {activeGroup.title}
+                            </h3>
+                        </div>
+
+                        <div className="p-5 md:p-10">
+                            <ol className="space-y-3.5 md:space-y-4">
+                                {activeGroup.items.map((item, idx) => (
+                                    <li
+                                        key={`${activeGroup.title}-${idx}`}
+                                        className="grid min-w-0 grid-cols-[30px_minmax(0,1fr)] gap-3 rounded-2xl border border-brand/5 bg-white/70 p-4 shadow-[0_12px_30px_rgba(0,35,68,0.04)] md:grid-cols-[42px_minmax(0,1fr)] md:gap-4 md:p-5"
+                                    >
+                                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-brand text-[10px] font-black text-white md:h-10 md:w-10 md:text-[13px]">
+                                            {String(idx + 1).padStart(2, "0")}
+                                        </span>
+                                        <p className="min-w-0 text-[14px] font-medium leading-[1.75] tracking-[-0.026em] text-brand-muted break-words md:pt-1 md:text-[16px] md:break-keep">
+                                            {item}
+                                        </p>
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+/**
  * TreatmentFAQ - QnA / 주의사항 (BrandManifesto 스타일)
  */
 export function TreatmentFAQ({ data }: { data: TreatmentPageData }) {
@@ -685,9 +812,9 @@ export function TreatmentFAQ({ data }: { data: TreatmentPageData }) {
 
                     {/* 오른쪽 슬라이드 카드 영역 */}
                     <div className="md:w-1/2 flex justify-center md:justify-end">
-                        <div className="w-full max-w-[500px] overflow-hidden rounded-[40px] shadow-2xl backdrop-blur-3xl border border-white/10">
+                        <div className="w-full max-w-[560px] overflow-hidden rounded-[32px] shadow-2xl backdrop-blur-3xl border border-white/10 md:rounded-[40px]">
                             {/* 상단 텍스트 영역 (짙은 다크 네이비) */}
-                            <div className="relative h-[350px] md:h-[450px] bg-[#222736]/85">
+                            <div className="relative min-h-[480px] bg-[#222736]/85 md:min-h-[560px]">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={currentIndex}
@@ -695,7 +822,7 @@ export function TreatmentFAQ({ data }: { data: TreatmentPageData }) {
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
                                         transition={{ duration: 0.5 }}
-                                        className="absolute inset-0 p-10 md:p-14 flex flex-col justify-center"
+                                        className="flex min-h-[480px] flex-col justify-center p-8 md:min-h-[560px] md:p-12"
                                     >
                                         <span className="block text-[13px] font-black tracking-[0.2em] text-white/50 uppercase mb-4">
                                             Q&A
@@ -705,7 +832,7 @@ export function TreatmentFAQ({ data }: { data: TreatmentPageData }) {
                                             initial={{ opacity: 0, y: 15 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.6, delay: 0.2 }}
-                                            className="text-[28px] md:text-[34px] font-bold text-white leading-tight tracking-[-0.04em] break-keep"
+                                            className="text-[24px] md:text-[32px] font-bold text-white leading-tight tracking-[-0.04em] break-words md:break-keep"
                                         >
                                             {currentFaq.question}
                                         </motion.h3>
@@ -715,11 +842,11 @@ export function TreatmentFAQ({ data }: { data: TreatmentPageData }) {
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.6, delay: 0.4 }}
                                         >
-                                            <p className="mt-8 text-[15px] md:text-[17px] font-normal leading-[1.8] text-white/70 tracking-[-0.026em] break-keep">
+                                            <p className="mt-7 whitespace-pre-line text-[14px] md:text-[16px] font-normal leading-[1.8] text-white/70 tracking-[-0.026em] break-words md:break-keep">
                                                 {currentFaq.answer}
                                             </p>
 
-                                            <div className="mt-10">
+                                            <div className="mt-8">
                                                 {/* 캡처본 스타일의 View More 텍스트 링크 */}
                                                 <Link
                                                     href="http://pf.kakao.com/_SbdEX"

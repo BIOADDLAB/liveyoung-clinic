@@ -68,7 +68,7 @@ export const HERO_SLIDES = [
     {
         id: 1,
         subtitle: "Beauty that feels young",
-        title: "우리는 시술을 팔지 않고\n당신의 얼굴을 분석합니다",
+        title: "당신의 고민과 얼굴을 정밀하게 분석하여\n꼭 필요한 솔루션만 제안합니다",
         description: "원장님 직접 상담 · 1:1 맞춤 분석",
         mediaType: "video" as const,
         mediaUrl: "/videos/hero1.mp4",

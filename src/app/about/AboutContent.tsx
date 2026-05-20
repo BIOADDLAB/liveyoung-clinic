@@ -39,7 +39,7 @@ export default function AboutContent() {
             <PageHeader
                 title="병원 소개"
                 subtitle="ABOUT LIVE YOUNG"
-                description="시술을 팔지 않고 당신의 고민과 얼굴을 정밀하게 분석하여 꼭 필요한 솔루션만 제안합니다"
+                description="당신의 고민과 얼굴을 정밀하게 분석하여 꼭 필요한 솔루션만 제안합니다"
                 bgImage="/images/covers/about_cover.webp"
                 mobileBgImage="/images/cover_m/LY Clinic/병원소개/about_cover_m.webp"
             />
@@ -87,7 +87,7 @@ export default function AboutContent() {
                                     </motion.span>
                                     저희
                                 </span>{" "}
-                                리브영은 속도보다 가치를 우선합니다. 모든 상담은 원장이 직접하며, <br className="hidden md:block" /> 과정에서의 얼굴 해부학적 구조와 미세한 표정 근육까지 세밀하게 분석합니다. <br className="hidden md:block" /> 본인조차 미처 발견하지 못한 고민의 근원까지 찾아내는 <strong className="font-semibold text-brand">'Needs Mapping'</strong>을 통해 추구미 설계가 가능합니다.
+                                리브영은 속도보다 가치를 우선합니다. 모든 상담은 원장이 직접하며, <br className="hidden md:block" /> 과정에서의 얼굴 해부학적 구조와 미세한 표정 근육까지 세밀하게 분석합니다. <br className="hidden md:block" /> 본인조차 미처 발견하지 못한 고민의 근원까지 찾아내는 <strong className="font-semibold text-brand">&apos;Needs Mapping&apos;</strong>을 통해 추구미 설계가 가능합니다.
                             </p>
 
                             <p className="text-[14px] md:text-[16px] leading-[1.8] text-brand-light break-keep">
