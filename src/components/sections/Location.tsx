@@ -223,7 +223,7 @@ export default function Location() {
                             </div>
 
                             {/* 안내 문구 */}
-                            <p className="text-brand text-[13px] ml-1 font-sans">※ 점심시간은 13:00 ~ 14:00, 수/토는 점심 시간 없이 진료합니다.</p>
+                            <p className="text-brand text-[13px] ml-1 font-sans">※ 점심시간은 13:00 ~ 14:00, 토요일은 점심 시간 없이 진료합니다.</p>
                         </div>
                     </div>
                 </motion.div>

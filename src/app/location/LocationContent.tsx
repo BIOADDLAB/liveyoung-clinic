@@ -497,7 +497,7 @@ export default function LocationContent() {
                                     </div>
                                 </div>
                                 <p className="mt-6 px-8 text-[14px] text-brand/40 md:px-12 font-medium">
-                                    점심시간은 13:00 ~ 14:00, 수/토는 점심 시간 없이 진료합니다.
+                                    점심시간은 13:00 ~ 14:00, 토요일은 점심 시간 없이 진료합니다.
                                 </p>
                             </div>
                         </motion.div>
