@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: ["/admin/"],
         },
-        sitemap: "https://www.livyoung-clinic.co.kr/sitemap.xml",
+        sitemap: "https://liveyoungclinic.co.kr/sitemap.xml",
     };
 }

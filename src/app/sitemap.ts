@@ -4,7 +4,7 @@ import type { MetadataRoute } from "next";
  * 사이트맵 생성
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://www.livyoung-clinic.co.kr";
+    const baseUrl = "https://liveyoungclinic.co.kr";
 
     return [
         // 메인
