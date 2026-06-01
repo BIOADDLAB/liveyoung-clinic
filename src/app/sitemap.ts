@@ -11,6 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
         // 클리닉 소개
         { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+        { url: `${baseUrl}/location`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+        // 분석
+        { url: `${baseUrl}/analysis/skin`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+        { url: `${baseUrl}/analysis/consultation`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
         // 시술 페이지
         { url: `${baseUrl}/treatment/lifting`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
         { url: `${baseUrl}/treatment/tightening`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
@@ -18,6 +22,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: `${baseUrl}/treatment/pore`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
         { url: `${baseUrl}/treatment/pigmentation`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
         { url: `${baseUrl}/treatment/stem-cell`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+        // 애프터케어
+        { url: `${baseUrl}/precautions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+        // 프로그램
+        { url: `${baseUrl}/program/special`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
         // 전후사진
         { url: `${baseUrl}/gallery`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
         // 상담문의

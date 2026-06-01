@@ -22,6 +22,23 @@ export const metadata: Metadata = {
     description: "당신의 고민과 얼굴을 정밀하게 분석합니다. Needs Mapping → Curated Plan → 맞춤 시술.",
     type: "website",
     locale: "ko_KR",
+    images: [
+      {
+        url: "/images/opengraph.png",
+        width: 1200,
+        height: 630,
+        alt: "리브영의원 Live Young Clinic",
+      },
+    ],
+  },
+  icons: {
+    icon: "/images/favicon-16x16.png",
+  },
+  verification: {
+    google: "H3GTuKql_2W98_-nCK2VQk8ce6SCH5vOr80SPGAFdWo",
+    other: {
+      "naver-site-verification": "6d5afdafbd383569502bd45003e7a594c4bde6cf",
+    },
   },
 };
 
