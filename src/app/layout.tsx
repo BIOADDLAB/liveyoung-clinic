@@ -54,6 +54,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="리브영의원 RSS"
+          href="/rss.xml"
+        />
       </head>
       <body className="antialiased">
         <Providers>
