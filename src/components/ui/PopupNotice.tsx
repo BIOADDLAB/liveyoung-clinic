@@ -9,29 +9,42 @@ import { createClient } from "@/utils/supabase/client";
  */
 
 interface PopupData {
+    id: number | string;
     title: string;
     image_url: string;
     link_url: string | null;
 }
 
+const POPUP_DISMISS_KEY_PREFIX = "liveyoung_popup_dismissed";
+
+const getPopupDismissKey = (items: PopupData[]) =>
+    `${POPUP_DISMISS_KEY_PREFIX}_${items.map((item) => item.id).join("_")}`;
+
 export default function PopupNotice() {
     const [isOpen, setIsOpen] = useState(false);
-    const [popupData, setPopupData] = useState<PopupData | null>(null);
-    const supabase = createClient();
+    const [popups, setPopups] = useState<PopupData[]>([]);
+    const [activePopupIndex, setActivePopupIndex] = useState(0);
 
     useEffect(() => {
-        const fetchPopup = async () => {
-            const { data } = await supabase
+        const fetchPopups = async () => {
+            const supabase = createClient();
+            const { data, error } = await supabase
                 .from("popups")
-                .select("*")
+                .select("id, title, image_url, link_url")
                 .eq("is_active", true)
-                .order("created_at", { ascending: false })
-                .limit(1);
+                .order("created_at", { ascending: false });
+
+            if (error) {
+                console.error("Popup fetch error:", error.message);
+                return;
+            }
 
             if (data && data.length > 0) {
-                setPopupData(data[0]);
+                const activePopups = data as PopupData[];
+                setPopups(activePopups);
+                setActivePopupIndex(0);
 
-                const dismissed = localStorage.getItem("liveyoung_popup_dismissed");
+                const dismissed = localStorage.getItem(getPopupDismissKey(activePopups));
                 if (dismissed) {
                     const dismissedTime = parseInt(dismissed, 10);
                     const now = Date.now();
@@ -41,7 +54,7 @@ export default function PopupNotice() {
             }
         };
 
-        fetchPopup();
+        fetchPopups();
     }, []);
 
     const handleClose = () => {
@@ -49,11 +62,13 @@ export default function PopupNotice() {
     };
 
     const handleDismissToday = () => {
-        localStorage.setItem("liveyoung_popup_dismissed", String(Date.now()));
+        localStorage.setItem(getPopupDismissKey(popups), String(Date.now()));
         setIsOpen(false);
     };
 
-    if (!popupData) return null;
+    const activePopup = popups[activePopupIndex];
+
+    if (!activePopup) return null;
 
     return (
         <AnimatePresence>
@@ -74,10 +89,10 @@ export default function PopupNotice() {
                         className="w-full max-w-[450px] overflow-hidden rounded-2xl bg-surface shadow-2xl border border-brand/5"
                     >
                         {/* 이미지 및 링크 영역 */}
-                        <div className={`relative w-full group overflow-hidden ${popupData.link_url ? "cursor-pointer" : ""}`}>
-                            {popupData.link_url ? (
+                        <div className={`relative w-full group overflow-hidden ${activePopup.link_url ? "cursor-pointer" : ""}`}>
+                            {activePopup.link_url ? (
                                 <a
-                                    href={popupData.link_url}
+                                    href={activePopup.link_url}
                                     onClick={handleClose}
                                     className="block relative"
                                 >
@@ -86,8 +101,8 @@ export default function PopupNotice() {
                                         transition={{ duration: 0.4, ease: "easeOut" }}
                                     >
                                         <img
-                                            src={popupData.image_url}
-                                            alt={popupData.title}
+                                            src={activePopup.image_url}
+                                            alt={activePopup.title}
                                             className="block h-auto w-full"
                                         />
                                     </motion.div>
@@ -101,12 +116,38 @@ export default function PopupNotice() {
                                 </a>
                             ) : (
                                 <img
-                                    src={popupData.image_url}
-                                    alt={popupData.title}
+                                    src={activePopup.image_url}
+                                    alt={activePopup.title}
                                     className="block h-auto w-full"
                                 />
                             )}
                         </div>
+
+                        {popups.length > 1 && (
+                            <div className="grid grid-cols-2 border-t border-brand/10 bg-white text-[13px] font-bold text-brand">
+                                {popups.map((popup, index) => {
+                                    const isActive = index === activePopupIndex;
+
+                                    return (
+                                        <button
+                                            key={popup.id}
+                                            type="button"
+                                            onClick={() => setActivePopupIndex(index)}
+                                            aria-pressed={isActive}
+                                            className={`min-h-[50px] border-b border-r border-brand/10 px-3 py-3 transition-colors ${
+                                                index % 2 === 1 ? "border-r-0" : ""
+                                            } ${
+                                                isActive
+                                                    ? "bg-brand/[0.08] text-brand"
+                                                    : "bg-white text-brand/70 hover:bg-brand/[0.03]"
+                                            }`}
+                                        >
+                                            <span className="block truncate">{popup.title}</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        )}
 
                         {/* 하단 푸터 (글라스모피즘 스타일 적용) */}
                         <div className="flex h-[55px] w-full bg-black/90 text-[13px] text-white/80 backdrop-blur-md">
