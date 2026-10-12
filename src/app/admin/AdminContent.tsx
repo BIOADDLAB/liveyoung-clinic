@@ -58,6 +58,7 @@ export default function AdminContent() {
     // 편집 모달 상태
     const [editingPopup, setEditingPopup] = useState<Partial<PopupItem> | null>(null);
     const [editingGallery, setEditingGallery] = useState<Partial<GalleryItem> | null>(null);
+    const [selectedInquiry, setSelectedInquiry] = useState<InquiryItem | null>(null);
     const [isUploading, setIsUploading] = useState(false);
 
     useEffect(() => {
@@ -360,7 +361,9 @@ export default function AdminContent() {
                                                 <div className="bg-brand/[0.02] px-5 py-4 border-b border-brand/5 flex justify-between items-center">
                                                     <div>
                                                         <div className="font-bold text-brand text-[16px]">{i.name}</div>
-                                                        <div className="text-[12px] text-brand/40 font-medium">{i.phone}</div>
+                                                        <a href={`tel:${i.phone}`} className="text-[13px] font-bold text-brand underline-offset-4 hover:underline">
+                                                            {i.phone}
+                                                        </a>
                                                     </div>
                                                     <select
                                                         value={i.status}
@@ -396,6 +399,27 @@ export default function AdminContent() {
                                                         <div className="border-t border-brand/5 pt-4">
                                                             <span className="text-[11px] font-bold text-brand/30 block mb-1">상담 내용</span>
                                                             <p className="text-[14px] text-brand-muted leading-relaxed whitespace-pre-wrap">{i.content}</p>
+                                                            <div className="mt-4 flex gap-2">
+                                                                <a
+                                                                    href={`tel:${i.phone}`}
+                                                                    className="flex-1 rounded-lg bg-brand px-4 py-2.5 text-center text-xs font-bold text-white"
+                                                                >
+                                                                    전화하기
+                                                                </a>
+                                                                <a
+                                                                    href={`sms:${i.phone}`}
+                                                                    className="flex-1 rounded-lg bg-brand/[0.06] px-4 py-2.5 text-center text-xs font-bold text-brand"
+                                                                >
+                                                                    문자하기
+                                                                </a>
+                                                            </div>
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => deleteItem("inquiries", i.id)}
+                                                                className="mt-2 w-full rounded-lg bg-red-50 px-4 py-2.5 text-center text-xs font-bold text-red-500 hover:bg-red-100"
+                                                            >
+                                                                상담 삭제
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -414,6 +438,7 @@ export default function AdminContent() {
                                                     <th className="px-6 py-4 text-sm font-bold text-brand-muted">상담 내용</th>
                                                     <th className="px-6 py-4 text-sm font-bold text-brand-muted">상태</th>
                                                     <th className="px-6 py-4 text-sm font-bold text-brand-muted">신청일</th>
+                                                    <th className="px-6 py-4 text-sm font-bold text-brand-muted">관리</th>
                                                 </tr>
                                             </thead>
                                             <tbody className="divide-y divide-brand/5">
@@ -421,11 +446,36 @@ export default function AdminContent() {
                                                     <tr key={i.id} className="transition-all hover:bg-brand/[0.01]">
                                                         <td className="px-6 py-5 text-nowrap">
                                                             <div className="font-bold">{i.name}</div>
-                                                            <div className="mt-1 text-xs text-brand/40">{i.phone}</div>
+                                                            <a href={`tel:${i.phone}`} className="mt-1 block text-xs font-bold text-brand underline-offset-4 hover:underline">
+                                                                {i.phone}
+                                                            </a>
+                                                            <div className="mt-2 flex gap-1.5">
+                                                                <a href={`tel:${i.phone}`} className="rounded-full bg-brand px-2.5 py-1 text-[10px] font-bold text-white">
+                                                                    전화
+                                                                </a>
+                                                                <a href={`sms:${i.phone}`} className="rounded-full bg-brand/[0.06] px-2.5 py-1 text-[10px] font-bold text-brand">
+                                                                    문자
+                                                                </a>
+                                                            </div>
                                                         </td>
                                                         <td className="px-6 py-5 text-sm">{i.treatment}</td>
                                                         <td className="px-6 py-5 text-sm font-medium text-brand">{i.preferred_date || '-'}</td>
-                                                        <td className="max-w-[300px] truncate px-6 py-5 text-sm text-brand-muted">{i.content}</td>
+                                                        <td className="max-w-[300px] px-6 py-5 text-sm text-brand-muted">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => setSelectedInquiry(i)}
+                                                                className="block max-w-[300px] truncate text-left underline-offset-4 hover:text-brand hover:underline"
+                                                            >
+                                                                {i.content}
+                                                            </button>
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => setSelectedInquiry(i)}
+                                                                className="mt-2 rounded-full bg-brand/[0.05] px-3 py-1 text-[11px] font-bold text-brand"
+                                                            >
+                                                                전체 보기
+                                                            </button>
+                                                        </td>
                                                         <td className="px-6 py-5">
                                                             <select
                                                                 value={i.status}
@@ -441,6 +491,15 @@ export default function AdminContent() {
                                                         </td>
                                                         <td className="px-6 py-5 text-xs text-brand/40">
                                                             {new Date(i.created_at).toLocaleDateString()}
+                                                        </td>
+                                                        <td className="px-6 py-5">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => deleteItem("inquiries", i.id)}
+                                                                className="rounded-full bg-red-50 px-3 py-1.5 text-xs font-bold text-red-500 hover:bg-red-100"
+                                                            >
+                                                                삭제
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 ))}
@@ -459,6 +518,73 @@ export default function AdminContent() {
                     )}
                 </div>
             </div>
+
+            {/* 상담 상세 모달 */}
+            {selectedInquiry && (
+                <div
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-5 backdrop-blur-sm"
+                    onClick={() => setSelectedInquiry(null)}
+                >
+                    <div
+                        className="max-h-[90vh] w-full max-w-[640px] overflow-y-auto rounded-[32px] bg-white p-8 shadow-2xl md:p-10"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="mb-8 flex items-start justify-between gap-6">
+                            <div>
+                                <p className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-brand/30">Inquiry Detail</p>
+                                <h2 className="text-2xl font-bold text-brand">상담 신청 상세</h2>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setSelectedInquiry(null)}
+                                className="rounded-full bg-brand/[0.05] px-4 py-2 text-sm font-bold text-brand/50 hover:text-brand"
+                            >
+                                닫기
+                            </button>
+                        </div>
+
+                        <div className="space-y-5">
+                            <div className="grid gap-4 rounded-2xl bg-brand/[0.03] p-5 md:grid-cols-2">
+                                <div>
+                                    <span className="mb-1 block text-xs font-bold text-brand/35">이름</span>
+                                    <p className="text-lg font-bold text-brand">{selectedInquiry.name}</p>
+                                </div>
+                                <div>
+                                    <span className="mb-1 block text-xs font-bold text-brand/35">연락처</span>
+                                    <a href={`tel:${selectedInquiry.phone}`} className="text-lg font-bold text-brand underline-offset-4 hover:underline">
+                                        {selectedInquiry.phone}
+                                    </a>
+                                </div>
+                                <div>
+                                    <span className="mb-1 block text-xs font-bold text-brand/35">신청 항목</span>
+                                    <p className="text-sm font-medium text-brand-muted">{selectedInquiry.treatment}</p>
+                                </div>
+                                <div>
+                                    <span className="mb-1 block text-xs font-bold text-brand/35">희망 일시</span>
+                                    <p className="text-sm font-medium text-brand-muted">{selectedInquiry.preferred_date || "-"}</p>
+                                </div>
+                            </div>
+
+                            <div className="rounded-2xl border border-brand/10 p-5">
+                                <span className="mb-3 block text-xs font-bold text-brand/35">상담 내용</span>
+                                <p className="whitespace-pre-wrap text-[15px] leading-relaxed text-brand">
+                                    {selectedInquiry.content}
+                                </p>
+                            </div>
+
+                            <div className="flex pt-2">
+                                <button
+                                    type="button"
+                                    onClick={() => updateInquiryStatus(selectedInquiry.id, "completed")}
+                                    className="w-full rounded-xl bg-green-50 py-4 text-center text-sm font-bold text-green-600"
+                                >
+                                    상담 완료 처리
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* 팝업 모달 */}
             {editingPopup && (
