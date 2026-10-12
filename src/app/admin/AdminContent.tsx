@@ -399,20 +399,6 @@ export default function AdminContent() {
                                                         <div className="border-t border-brand/5 pt-4">
                                                             <span className="text-[11px] font-bold text-brand/30 block mb-1">상담 내용</span>
                                                             <p className="text-[14px] text-brand-muted leading-relaxed whitespace-pre-wrap">{i.content}</p>
-                                                            <div className="mt-4 flex gap-2">
-                                                                <a
-                                                                    href={`tel:${i.phone}`}
-                                                                    className="flex-1 rounded-lg bg-brand px-4 py-2.5 text-center text-xs font-bold text-white"
-                                                                >
-                                                                    전화하기
-                                                                </a>
-                                                                <a
-                                                                    href={`sms:${i.phone}`}
-                                                                    className="flex-1 rounded-lg bg-brand/[0.06] px-4 py-2.5 text-center text-xs font-bold text-brand"
-                                                                >
-                                                                    문자하기
-                                                                </a>
-                                                            </div>
                                                             <button
                                                                 type="button"
                                                                 onClick={() => deleteItem("inquiries", i.id)}
@@ -449,14 +435,6 @@ export default function AdminContent() {
                                                             <a href={`tel:${i.phone}`} className="mt-1 block text-xs font-bold text-brand underline-offset-4 hover:underline">
                                                                 {i.phone}
                                                             </a>
-                                                            <div className="mt-2 flex gap-1.5">
-                                                                <a href={`tel:${i.phone}`} className="rounded-full bg-brand px-2.5 py-1 text-[10px] font-bold text-white">
-                                                                    전화
-                                                                </a>
-                                                                <a href={`sms:${i.phone}`} className="rounded-full bg-brand/[0.06] px-2.5 py-1 text-[10px] font-bold text-brand">
-                                                                    문자
-                                                                </a>
-                                                            </div>
                                                         </td>
                                                         <td className="px-6 py-5 text-sm">{i.treatment}</td>
                                                         <td className="px-6 py-5 text-sm font-medium text-brand">{i.preferred_date || '-'}</td>
